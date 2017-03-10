@@ -1,0 +1,62 @@
+body {
+    display: inline-block;
+    width: 100%;
+    background-color: ;
+
+}
+.main-container {
+
+    width: 60%;
+    margin: 0 auto;
+}
+.icon {
+    height: 70px;
+    text-align: center;
+}
+.input{
+    text-align: center;
+    height: 50px;
+    background-color: #444444;
+
+}
+.address-count {
+    height: 30px;
+    width: 300px;
+    font-size: 18px;
+    margin-right: 5px;
+    margin-top: 10px;
+}
+.button-generate {
+    height: 30px;
+    background-color: #f7931a;
+    color: #fbfbfb;
+    font-size: 18px;
+    border: 1px solid #8a8a8a;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+.keys {
+    font-size: 20px;
+    color: #fbfbfb;
+    background-color: #444444;
+    font-family: sans-serif;
+    padding: 5px 0;
+}
+.key {
+    list-style: none;
+    line-height: 2em;
+    padding-left: 0;
+    height: 500px;
+    overflow: auto;
+}
+li {
+    border: 0.5px solid darkslategrey;
+    margin-top: 5px;
+    background-color: #fbfbfb;
+    font-size: 18px;
+}
+
+textarea {
+    width: 800px;
+    height: 200px;
+}
