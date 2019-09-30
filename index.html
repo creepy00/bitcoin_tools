@@ -13563,6 +13563,8 @@ module.exports = Point
 		</div>
 		<div class="input">
 			<input type="number" class="address-count" id="address_count" value="10" />
+			<input type="text" class="address-count" id="address_starts_with" value="" placeholder="Address starts with" />
+			<input type="text" class="address-count" id="address_contains" value="" placeholder="Address contains" />
 			<button class="button-generate" id="button_generate" onclick="generateAddress()">Generate address pairs</button>
 			<br />
 		</div>
@@ -13601,13 +13603,45 @@ module.exports = Point
 			let generateAddress = function() {
 				document.getElementById("keys").innerHTML = "";
 
-				for (let i = 0; i < document.getElementById("address_count").value; i++) {
+				const startsWith = document.getElementById("address_starts_with").value;
+				const contains = document.getElementById("address_contains").value;
+				if (startsWith) {
+					// if starts with is filled generate only 1 address
 					let address = foo.bitcoin.ECPair.makeRandom({ network: getNetwork() });
+					console.log(address.getAddress());
+					while (address.getAddress().startsWith(startsWith) !== true) {
+						address = foo.bitcoin.ECPair.makeRandom({ network: getNetwork() });
+						console.log(address.getAddress());
+					}
+
 					let newLI = document.createElement("li");
-					let newText = document.createTextNode((i+1) + '.   ' + address.getAddress() + ' / ' + address.toWIF());
+					let newText = document.createTextNode(("1") + '.   ' + address.getAddress() + ' / ' + address.toWIF());
 					newLI.appendChild(newText);
 
 					document.getElementById("keys").appendChild(newLI);
+				} else if (contains) {
+					// if contains is filled generate only 1 address
+					let address = foo.bitcoin.ECPair.makeRandom({ network: getNetwork() });
+					console.log(address.getAddress());
+					while (address.getAddress().includes(contains) !== true) {
+						address = foo.bitcoin.ECPair.makeRandom({ network: getNetwork() });
+						console.log(address.getAddress());
+					}
+
+					let newLI = document.createElement("li");
+					let newText = document.createTextNode(("1") + '.   ' + address.getAddress() + ' / ' + address.toWIF());
+					newLI.appendChild(newText);
+
+					document.getElementById("keys").appendChild(newLI);
+				} else {
+					for (let i = 0; i < document.getElementById("address_count").value; i++) {
+						let address = foo.bitcoin.ECPair.makeRandom({ network: getNetwork() });
+						let newLI = document.createElement("li");
+						let newText = document.createTextNode((i+1) + '.   ' + address.getAddress() + ' / ' + address.toWIF());
+						newLI.appendChild(newText);
+
+						document.getElementById("keys").appendChild(newLI);
+					}
 				}
 			};
 
