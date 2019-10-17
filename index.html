@@ -13608,10 +13608,8 @@ module.exports = Point
 				if (startsWith) {
 					// if starts with is filled generate only 1 address
 					let address = foo.bitcoin.ECPair.makeRandom({ network: getNetwork() });
-					console.log(address.getAddress());
 					while (address.getAddress().startsWith(startsWith) !== true) {
 						address = foo.bitcoin.ECPair.makeRandom({ network: getNetwork() });
-						console.log(address.getAddress());
 					}
 
 					let newLI = document.createElement("li");
@@ -13622,10 +13620,8 @@ module.exports = Point
 				} else if (contains) {
 					// if contains is filled generate only 1 address
 					let address = foo.bitcoin.ECPair.makeRandom({ network: getNetwork() });
-					console.log(address.getAddress());
 					while (address.getAddress().includes(contains) !== true) {
 						address = foo.bitcoin.ECPair.makeRandom({ network: getNetwork() });
-						console.log(address.getAddress());
 					}
 
 					let newLI = document.createElement("li");
